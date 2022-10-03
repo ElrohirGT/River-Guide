@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.river_guide.riverguide.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.river_guide.riverguide.HelloController">
+   <children>
+      <SplitPane dividerPositions="0.4347389558232932" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TextField fx:id="input" layoutX="225.0" layoutY="86.0" />
+                  <Button fx:id="btn" layoutX="274.0" layoutY="131.0" mnemonicParsing="false" onAction="#onbtnClick" text="Ingresar" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="233.0" prefWidth="599.0">
+               <children>
+                  <TableView fx:id="table" layoutX="19.0" layoutY="11.0" prefHeight="200.0" prefWidth="563.0">
+                    <columns>
+                      <TableColumn fx:id="rio" prefWidth="108.19997787475586" text="Rio" />
+                      <TableColumn fx:id="contami" prefWidth="455.00001525878906" text="Contaminacion" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
