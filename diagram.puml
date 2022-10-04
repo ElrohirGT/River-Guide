@@ -1,0 +1,40 @@
+@startuml Class Diagram
+
+class Rios {
+    - SimpleStringProperty nombre
+    - SimpleStringProperty contami1
+
+    + {ctor} rios(String nombre, String contami1)
+
+    + String getContami1()
+    + void setContami1(String contami1)
+
+    - String getNombre()
+    - void setNombre(String nombre)
+}
+
+class HelloController {
+    - HashMap<String, rios[]> departments
+    - HashMap<String, Image> images
+    - Random random
+    - Label imageCaptionLabel
+    - Label errorLabel
+    - TextField input
+    - TableView<rios> table
+    - TableColumn<rios, String> rio
+    - TableColumn<rios, String> contami
+    - ImageView imgView
+
+    + void initialize(URL location, ResourceBundle resource)
+    # void onbtnClick()
+}
+
+class HelloApplication {
+    + void start(Stage stage)
+    + {static} void main(String[] args)
+}
+
+Rios --> HelloController
+HelloController ..> HelloApplication
+
+@enduml
