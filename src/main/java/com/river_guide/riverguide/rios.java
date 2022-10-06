@@ -4,20 +4,20 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class rios {
     SimpleStringProperty nombre;
-    SimpleStringProperty contami1;
+    SimpleStringProperty contami;
 
-    public rios(String nombre, String contami1) {
+    public rios(String nombre, String contami) {
         this.nombre = new SimpleStringProperty(nombre);
-        this.contami1 = new SimpleStringProperty(contami1);
+        this.contami = new SimpleStringProperty(contami);
 
     }
 
-    public String getContami1() {
-        return contami1.get();
+    public String getContami() {
+        return contami.get();
     }
 
-    public void setContami1(String contami1) {
-        this.contami1 = new SimpleStringProperty(contami1);
+    public void setContami(String contami) {
+        this.contami = new SimpleStringProperty(contami);
     }
 
     public String getNombre() {

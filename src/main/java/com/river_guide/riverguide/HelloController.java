@@ -47,7 +47,7 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resource) {
         rio.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        contami.setCellValueFactory(new PropertyValueFactory<>("contami1"));
+        contami.setCellValueFactory(new PropertyValueFactory<>("contami"));
 
         var motagua = new rios("Río Motagua", "20,000,000 kg de basura fluyen por el río anualmente");
         departments.put("quiché", new rios[] { motagua });
@@ -102,7 +102,8 @@ public class HelloController implements Initializable {
                     URL url = getClass().getResource(path);
                     try {
                         String result = java.net.URLDecoder.decode(url.getPath(), StandardCharsets.UTF_8);
-                        images.put(river.getNombre(), new Image("/" + river.getNombre() + ".jpg", 278, 132, true, true));
+                        images.put(river.getNombre(),
+                                new Image("/" + river.getNombre() + ".jpg", 278, 132, true, true));
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
