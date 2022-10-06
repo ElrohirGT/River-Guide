@@ -1,11 +1,5 @@
 package com.river_guide.riverguide;
 
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -15,6 +9,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
 
@@ -61,13 +63,13 @@ public class HelloController implements Initializable {
         departments.put("totonicapan", new rios[] { samala });
         departments.put("retalhuleu", new rios[] { samala });
 
-        var vacas = new rios("Río Las Vacas", "20mil tonelada van del río las vacas al río Motagua anualmente");
+        var vacas = new rios("Río Las Vacas", "20 mil tonelada van del río las vacas al río Motagua anualmente");
         departments.put("guatemala", new rios[] { vacas, motagua });
 
         departments.put("petén", new rios[] { new rios("Río La Pasión",
                 "La Pasión es una de las tragedias ambientales más importantes del país. En el 2015\n químicos fueron vertidos al río, los cuales causaron un envenenamiento de varios\n organismos") });
 
-        departments.put("huehuetenanto", new rios[] {
+        departments.put("huehuetenango", new rios[] {
                 new rios("Río Ixcán", "El rastro municipal contamina al río con heces, sangre y restos de animales") });
 
         departments.put("izabal",
@@ -100,8 +102,7 @@ public class HelloController implements Initializable {
                     URL url = getClass().getResource(path);
                     try {
                         String result = java.net.URLDecoder.decode(url.getPath(), StandardCharsets.UTF_8);
-                        images.put(river.getNombre(),
-                                new Image("/" + river.getNombre() + ".jpg", 278, 132, true, true));
+                        images.put(river.getNombre(), new Image("/" + river.getNombre() + ".jpg", 278, 132, true, true));
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
