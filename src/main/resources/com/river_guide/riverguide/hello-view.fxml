@@ -7,54 +7,105 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.river_guide.riverguide.HelloController">
    <children>
-      <VBox alignment="CENTER" prefHeight="475.0" prefWidth="683.0">
-         <children>
-            <Label text="Ingrese su departamento:" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <ComboBox fx:id="combobox" onAction="#onbtnClick" prefWidth="150.0" />
-               </children>
-            </HBox>
-            <Label fx:id="errorLabel" textFill="RED">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TableView fx:id="table" prefHeight="200.0" prefWidth="563.0">
-              <columns>
-                <TableColumn fx:id="rio" prefWidth="108.19997787475586" text="Rio" />
-                <TableColumn fx:id="contami" prefWidth="455.00001525878906" text="Contaminacion" />
-              </columns>
-            </TableView>
-            <SplitPane dividerPositions="0.41304347826086957" prefHeight="160.0" prefWidth="200.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <TabPane prefHeight="475.0" prefWidth="683.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Buscar por departamento">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="168.0" prefWidth="278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="CENTER" prefHeight="475.0" prefWidth="683.0">
                            <children>
-                              <ImageView fx:id="imgView" fitHeight="132.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="imageCaptionLabel" alignment="CENTER" prefHeight="18.0" prefWidth="285.0" textAlignment="CENTER" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="402.0" text="¿Qué se está realizando para su salvación?" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                              <Label text="Ingrese su departamento:" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="combobox" onAction="#onbtnClick" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="errorLabel" textFill="RED">
                                  <font>
-                                    <Font name="System Bold" size="18.0" />
+                                    <Font name="System Bold" size="13.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="extraLabel" alignment="CENTER" prefHeight="113.0" prefWidth="397.0" text="Desafortunadamente ¡Nada!" textAlignment="JUSTIFY" />
+                              <TableView fx:id="table" prefHeight="200.0" prefWidth="563.0">
+                                <columns>
+                                  <TableColumn fx:id="rio" prefWidth="108.19997787475586" text="Rio" />
+                                  <TableColumn fx:id="contami" prefWidth="455.00001525878906" text="Contaminacion" />
+                                </columns>
+                              </TableView>
+                              <SplitPane dividerPositions="0.41304347826086957" prefHeight="160.0" prefWidth="200.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="168.0" prefWidth="278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <ImageView fx:id="imgView" fitHeight="132.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Label fx:id="imageCaptionLabel" alignment="CENTER" prefHeight="18.0" prefWidth="285.0" textAlignment="CENTER" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="402.0" text="¿Qué se está realizando para su salvación?" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="extraLabel" alignment="CENTER" prefHeight="113.0" prefWidth="397.0" text="Desafortunadamente ¡Nada!" textAlignment="JUSTIFY" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
                            </children>
                         </VBox>
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
-         </children>
-      </VBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Buscar por río">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="475.0" prefWidth="683.0">
+                           <children>
+                               <Label text="Ingrese el nombre del río:" />
+                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="texto" />
+                                 </children>
+                               </HBox>
+                               <TableView fx:id="table2" onMouseClicked="#onMouseClick" prefHeight="200.0" prefWidth="563.0">
+                                   <columns>
+                                       <TableColumn fx:id="rio2" prefWidth="160.80000913143158" text="Rio" />
+                                       <TableColumn fx:id="contami2" prefWidth="344.1999816894531" text="Contaminacion" />
+                                   </columns>
+                               </TableView>
+                              <SplitPane dividerPositions="0.36" prefHeight="160.0" prefWidth="200.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="250.0">
+                                       <children>
+                                           <TableView fx:id="table3" prefHeight="150.0" prefWidth="246.0" visible="false">
+                                               <columns>
+                                                   <TableColumn fx:id="depa" prefWidth="250.0" text="Departamentos afectados" />
+                                               </columns>
+                                           </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="250.0">
+                                       <children>
+                                          <Label fx:id="label1" layoutX="185.0" layoutY="5.0" text="Información" />
+                                          <TextArea fx:id="info" disable="true" layoutX="-2.0" layoutY="24.0" prefHeight="102.0" prefWidth="438.0" />
+                                       </children></AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children></VBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
