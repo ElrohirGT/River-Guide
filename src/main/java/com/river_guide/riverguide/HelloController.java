@@ -1,11 +1,10 @@
 package com.river_guide.riverguide;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,10 +27,14 @@ public class HelloController implements Initializable {
     private Label imageCaptionLabel;
 
     @FXML
-    private Label errorLabel;
+    private ComboBox<String> combobox;
+
+    ObservableList<String> list = FXCollections.observableArrayList("Guatemala","Alta Verapaz","Baja Verapaz","Chimaltenango","El Progreso","Escuintla", "Huehuetenango","Izabal","Jalapa","Jutiapa","Petén","Quetzaltenango","Quiché","Retalhuleu","Sacatepéquez","San Marcos","Santa Rosa","Sololá","Suchitepéquez","Totonicapán","Zacapa");
 
     @FXML
-    private TextField input;
+    private Label errorLabel;
+
+
     @FXML
     private TableView<rios> table;
 
@@ -46,6 +49,7 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resource) {
+        combobox.setItems(list);
         rio.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         contami.setCellValueFactory(new PropertyValueFactory<>("contami"));
 
@@ -60,7 +64,7 @@ public class HelloController implements Initializable {
         departments.put("zacapa", new rios[] { motagua });
 
         var samala = new rios("Río Samalá", "626,000kg de plástico son emitido anualmente");
-        departments.put("totonicapan", new rios[] { samala });
+        departments.put("totonicapán", new rios[] { samala });
         departments.put("retalhuleu", new rios[] { samala });
 
         var vacas = new rios("Río Las Vacas", "20 mil tonelada van del río las vacas al río Motagua anualmente");
@@ -115,7 +119,8 @@ public class HelloController implements Initializable {
     @FXML
     protected void onbtnClick() {
         table.getItems().clear();
-        String texto = input.getText().toLowerCase();
+       // String texto = input.getText().toLowerCase();
+        String texto = combobox.getValue().toLowerCase();
 
         errorLabel.setText("");
         imgView.setImage(null);
