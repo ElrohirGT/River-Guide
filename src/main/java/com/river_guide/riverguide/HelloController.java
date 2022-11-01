@@ -172,10 +172,7 @@ public class HelloController implements Initializable {
         for (var riverList : departments.values()) {
             for (var river : riverList) {
                 if (!images.containsKey(river.getNombre())) {
-                    var path = "/" + river.getNombre() + ".jpg";
-                    URL url = getClass().getResource(path);
                     try {
-                        String result = java.net.URLDecoder.decode(url.getPath(), StandardCharsets.UTF_8);
                         images.put(river.getNombre(),
                                 new Image("/" + river.getNombre() + ".jpg", 278, 132, true, true));
                     } catch (Exception e) {
