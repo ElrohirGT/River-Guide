@@ -83,7 +83,7 @@
                                     <TextField fx:id="texto" />
                                  </children>
                                </HBox>
-                               <TableView fx:id="table2" onMouseClicked="#onMouseClick" prefHeight="200.0" prefWidth="563.0">
+                               <TableView fx:id="riversTable" onMouseClicked="#onMouseClick" prefHeight="200.0" prefWidth="563.0">
                                    <columns>
                                        <TableColumn fx:id="rio2" prefWidth="160.80000913143158" text="Rio" />
                                        <TableColumn fx:id="contami2" prefWidth="344.1999816894531" text="Contaminacion" />
@@ -93,7 +93,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="250.0">
                                        <children>
-                                           <TableView fx:id="table3" prefHeight="150.0" prefWidth="246.0" visible="false">
+                                           <TableView fx:id="departmentsTable" prefHeight="150.0" prefWidth="246.0" visible="false">
                                                <columns>
                                                    <TableColumn fx:id="depa" prefWidth="250.0" text="Departamentos afectados" />
                                                </columns>

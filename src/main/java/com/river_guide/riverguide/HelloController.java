@@ -28,7 +28,7 @@ public class HelloController implements Initializable {
     private TextField texto;
 
     @FXML
-    private TableView<rios> table2;
+    private TableView<rios> riversTable;
 
     @FXML
     private TableColumn depa;
@@ -41,7 +41,7 @@ public class HelloController implements Initializable {
     private final ObservableList<rios> list2 = FXCollections.observableArrayList();
 
     @FXML
-    private TableView<departamentos> table3;
+    private TableView<departamentos> departmentsTable;
 
     @FXML
     private Label imageCaptionLabel;
@@ -49,14 +49,16 @@ public class HelloController implements Initializable {
     @FXML
     private ComboBox<String> combobox;
 
-    ObservableList<String> list = FXCollections.observableArrayList("Guatemala","Alta Verapaz","Baja Verapaz","Chimaltenango","El Progreso","Escuintla", "Huehuetenango","Izabal","Jalapa","Jutiapa","Petén","Quetzaltenango","Quiché","Retalhuleu","Sacatepéquez","San Marcos","Santa Rosa","Sololá","Suchitepéquez","Totonicapán","Zacapa");
+    ObservableList<String> list = FXCollections.observableArrayList("Guatemala", "Alta Verapaz", "Baja Verapaz",
+            "Chimaltenango", "El Progreso", "Escuintla", "Huehuetenango", "Izabal", "Jalapa", "Jutiapa", "Petén",
+            "Quetzaltenango", "Quiché", "Retalhuleu", "Sacatepéquez", "San Marcos", "Santa Rosa", "Sololá",
+            "Suchitepéquez", "Totonicapán", "Zacapa");
 
     @FXML
     private Label label1;
 
     @FXML
     private TextArea info;
-
 
     @FXML
     private TableView<rios> table;
@@ -79,42 +81,44 @@ public class HelloController implements Initializable {
         rio2.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         contami2.setCellValueFactory(new PropertyValueFactory<>("contami"));
 
-        rios rio1 = new rios("Río Motagua","20,000,000 kg de basura fluyen por el río anualmente");
-        rios rio2 = new rios("Río Samalá","626,000kg de plástico son emitido anualmente");
+        rios rio1 = new rios("Río Motagua", "20,000,000 kg de basura fluyen por el río anualmente");
+        rios rio2 = new rios("Río Samalá", "626,000kg de plástico son emitido anualmente");
         rios rio3 = new rios("Río Las Vacas", "20 mil tonelada van del río las vacas al río Motagua anualmente");
-        rios rio4 = new rios("Río La Pasión", "La Pasión es una de las tragedias ambientales más importantes del país. En el 2015\n químicos fueron vertidos al río, los cuales causaron un envenenamiento de varios\n organismos");
-        rios rio5 = new rios("Río Ixcán", "El rastro municipal contamina al río con heces, sangre y restos de animales");
+        rios rio4 = new rios("Río La Pasión",
+                "La Pasión es una de las tragedias ambientales más importantes del país. En el 2015\n químicos fueron vertidos al río, los cuales causaron un envenenamiento de varios\n organismos");
+        rios rio5 = new rios("Río Ixcán",
+                "El rastro municipal contamina al río con heces, sangre y restos de animales");
         rios rio6 = new rios("Río Dulce", "401,000kg de plástico son emitido anualmente");
         rios rio7 = new rios("Río Coyolate", "417,000kg de plástico son emitido anualmente");
         rios rio8 = new rios("Río María Linda", "1,258,000kg de plástico son emitido anualmente");
-        rios rio9 = new rios("Río Paz", "En el 2016 el río fue contaminado con melaza, la cual causó la muerte de varios\n peces");
-        rios rio10 = new rios("Río de los Esclavos", "Uno de los contaminantes más grandes al río es la fuente agrícola, o sea, las aguas,\nmieles y pulpa de café");
+        rios rio9 = new rios("Río Paz",
+                "En el 2016 el río fue contaminado con melaza, la cual causó la muerte de varios\n peces");
+        rios rio10 = new rios("Río de los Esclavos",
+                "Uno de los contaminantes más grandes al río es la fuente agrícola, o sea, las aguas,\nmieles y pulpa de café");
         rios rio11 = new rios("Río Icán", "365,000kg de plástico son emitido anualmente");
         rios rio12 = new rios("Río Nahualate", "523,000kg de plástico son emitido anualmente");
         rios rio13 = new rios("Río Naranjo", "552,000kg de plástico son emitido anualmente");
         rios rio14 = new rios("Río Suchiate", "419,000kg de plástico son emitido anualmente");
-        list2.addAll(rio1,rio2,rio3,rio4,rio5,rio6,rio7,rio8,rio9,rio10,rio11,rio12,rio13,rio14);
+        list2.addAll(rio1, rio2, rio3, rio4, rio5, rio6, rio7, rio8, rio9, rio10, rio11, rio12, rio13, rio14);
 
-        FilteredList<rios> filtrado = new FilteredList<>(list2, b->true);
-            texto.textProperty().addListener((observable, oldValue, newValue) ->{
-                filtrado.setPredicate(rios -> {
-                    if(newValue == null|| newValue.isEmpty()){
-                        return true;
-                    }
-                    String lowercase = newValue.toLowerCase();
-                    if(rios.getNombre().toLowerCase().indexOf(lowercase)!=-1){
-                        return true;
-                    }
-                    else{
-                        return false;
-                    }
-                });
-            } );
+        FilteredList<rios> filtrado = new FilteredList<>(list2, b -> true);
+        texto.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtrado.setPredicate(rios -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowercase = newValue.toLowerCase();
+                if (rios.getNombre().toLowerCase().indexOf(lowercase) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
 
         SortedList<rios> ordenada = new SortedList<>(filtrado);
-        ordenada.comparatorProperty().bind(table2.comparatorProperty());
-        table2.setItems(ordenada);
-
+        ordenada.comparatorProperty().bind(riversTable.comparatorProperty());
+        riversTable.setItems(ordenada);
 
         rio.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         contami.setCellValueFactory(new PropertyValueFactory<>("contami"));
@@ -205,23 +209,28 @@ public class HelloController implements Initializable {
             }
         }
     }
+
     @FXML
     protected void onMouseClick() {
-        table3.getItems().clear();
-        if(table2.getSelectionModel().getSelectedItem().getNombre()!=null){
-            table3.setVisible(true);
-            if(table2.getSelectionModel().getSelectedItem().getNombre()=="Río Motagua"){
-                table3.getItems().add(new departamentos("Quiché"));
-                table3.getItems().add(new departamentos("Alta Verapaz"));
-                table3.getItems().add(new departamentos("Baja Verapaz"));
-                table3.getItems().add(new departamentos("Sololá"));
-                table3.getItems().add(new departamentos("Chimaltenango"));
-                table3.getItems().add(new departamentos("Guatemala"));
-                table3.getItems().add(new departamentos("Jalapa"));
-                table3.getItems().add(new departamentos("Chiquimula"));
-                table3.getItems().add(new departamentos("El progreso"));
-                table3.getItems().add(new departamentos("Zacapa"));
-                table3.getItems().add(new departamentos("Izabal"));
+        departmentsTable.getItems().clear();
+        var selectedItem = riversTable.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            return;
+        }
+        if (selectedItem.getNombre() != null) {
+            departmentsTable.setVisible(true);
+            if (riversTable.getSelectionModel().getSelectedItem().getNombre() == "Río Motagua") {
+                departmentsTable.getItems().add(new departamentos("Quiché"));
+                departmentsTable.getItems().add(new departamentos("Alta Verapaz"));
+                departmentsTable.getItems().add(new departamentos("Baja Verapaz"));
+                departmentsTable.getItems().add(new departamentos("Sololá"));
+                departmentsTable.getItems().add(new departamentos("Chimaltenango"));
+                departmentsTable.getItems().add(new departamentos("Guatemala"));
+                departmentsTable.getItems().add(new departamentos("Jalapa"));
+                departmentsTable.getItems().add(new departamentos("Chiquimula"));
+                departmentsTable.getItems().add(new departamentos("El progreso"));
+                departmentsTable.getItems().add(new departamentos("Zacapa"));
+                departmentsTable.getItems().add(new departamentos("Izabal"));
             }
         }
 
