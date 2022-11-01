@@ -52,9 +52,6 @@ public class HelloController implements Initializable {
     ObservableList<String> list = FXCollections.observableArrayList("Guatemala","Alta Verapaz","Baja Verapaz","Chimaltenango","El Progreso","Escuintla", "Huehuetenango","Izabal","Jalapa","Jutiapa","Petén","Quetzaltenango","Quiché","Retalhuleu","Sacatepéquez","San Marcos","Santa Rosa","Sololá","Suchitepéquez","Totonicapán","Zacapa");
 
     @FXML
-    private Label errorLabel;
-
-    @FXML
     private Label label1;
 
     @FXML
@@ -190,12 +187,10 @@ public class HelloController implements Initializable {
         table.getItems().clear();
         String texto = combobox.getValue().toLowerCase();
 
-        errorLabel.setText("");
         imgView.setImage(null);
         imageCaptionLabel.setText("");
 
         if (!departments.containsKey(texto)) {
-            errorLabel.setText("Por favor ingresa un departamento válido!");
             return;
         }
 

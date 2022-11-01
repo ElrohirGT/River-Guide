@@ -21,11 +21,6 @@
                                     <ComboBox fx:id="combobox" onAction="#onbtnClick" prefWidth="150.0" />
                                  </children>
                               </HBox>
-                              <Label fx:id="errorLabel" textFill="RED">
-                                 <font>
-                                    <Font name="System Bold" size="13.0" />
-                                 </font>
-                              </Label>
                               <TableView fx:id="table" prefHeight="200.0" prefWidth="563.0">
                                 <columns>
                                   <TableColumn fx:id="rio" prefWidth="108.19997787475586" text="Rio" />
