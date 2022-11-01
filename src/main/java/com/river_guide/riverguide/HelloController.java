@@ -1,16 +1,22 @@
 package com.river_guide.riverguide;
 
+import javafx.application.HostServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -72,8 +78,12 @@ public class HelloController implements Initializable {
     @FXML
     private ImageView imgView;
 
+    private ResourceBundle _resourceBundle;
+    private HostServices _hostServices;
+
     @Override
     public void initialize(URL location, ResourceBundle resource) {
+        _resourceBundle = resource;
         combobox.setItems(list);
 
         depa.setCellValueFactory(new PropertyValueFactory<>("departamento"));
@@ -208,6 +218,24 @@ public class HelloController implements Initializable {
     }
 
     @FXML
+    protected void onSeeBibliography() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bibliography-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 590, 300);
+            BibliographyViewController controller = fxmlLoader.getController();
+            controller.setHostServices(_hostServices);
+
+            Stage stage = new Stage();
+            stage.setTitle("Bibliografía");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     protected void onMouseClick() {
         departmentsTable.getItems().clear();
         var selectedItem = riversTable.getSelectionModel().getSelectedItem();
@@ -233,4 +261,7 @@ public class HelloController implements Initializable {
 
     }
 
+    public void setHostServices(HostServices hostServices) {
+        _hostServices = hostServices;
+    }
 }

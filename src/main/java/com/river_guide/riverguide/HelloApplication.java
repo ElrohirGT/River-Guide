@@ -12,6 +12,10 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 550);
+
+        HelloController controller = fxmlLoader.getController();
+        controller.setHostServices(getHostServices());
+
         stage.setTitle("River Guide");
         stage.setScene(scene);
         stage.show();
