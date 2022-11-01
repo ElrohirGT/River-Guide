@@ -34,7 +34,7 @@ class HelloApplication {
     + {static} void main(String[] args)
 }
 
-Rios --> HelloController
-HelloController ..> HelloApplication
+Rios <-- HelloController
+HelloController <.. HelloApplication
 
 @enduml
