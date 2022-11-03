@@ -201,7 +201,12 @@ public class HelloController implements Initializable {
         table.getItems().clear();
         String texto = combobox.getValue().toLowerCase();
         String motagua = "\"Río Motagua\" En la Cuenca del Motagua, se capacitó a 17 932 personas, \n y en lo referente a la reforestación se plantaron 144 mil árboles, para \nlograr la recuperación de 145 hectáreas de zonas degradadas.";
-
+        String samala = "\"Río Samalá\" El Ministerio de Ambiente y Recursos Naturales (MARN) \n impulsa y da seguimiento a este proyecto. \n En ese marco, se efectuó un taller en el cual \n participaron usuarios de la cuenca y personal del Viceministerio del Agua. \n La actividad tuvo lugar en Santa Cruz Muluá, Retalhuleu.";
+        String naranjo = "\"Río Naranjo\" La cartera tiene como  prioridad el cuidado de las \n cuencas del país; por ello, se han establecido diferentes mesas técnicas \n de trabajo que definen acciones para su resguardo.";
+        String suchiate = "\"Río Suchiate\" La Delegación de San Marcos del Ministerio de \n Ambiente y Recursos Naturales (MARN), hizo una jornada \n de limpieza en la ribera del río Suchiate, \n fronterizo con México, como parte de las actividades de la campaña \n “Hacé tu parte, no más basura”.";
+        String coyolate = "\n \"Río Coyolate\" Coordinación para liberación de 2,500 alevines de \n mojarras nativas (tusa, balcera y prieta) con el propósito de contribuir \n y conservar la biodiversidad acuática.";
+        String ican = "\"Río Icán\" saneamiento del manto de agua, reforestación y \n recuperación de la biodiversidad.";
+        
         imgView.setImage(null);
         imageCaptionLabel.setText("");
         extraLabel.setText("");
@@ -231,13 +236,13 @@ public class HelloController implements Initializable {
             extraLabel.setText(motagua);
         }
         else if(texto.equalsIgnoreCase("Chimaltenango")){
-            extraLabel.setText(motagua + "\n \"Río Coyolate\" Coordinación para liberación de 2,500 alevines de \n mojarras nativas (tusa, balcera y prieta) con el propósito de contribuir \n y conservar la biodiversidad acuática.");
+            extraLabel.setText(motagua + coyolate);
         }
         else if(texto.equalsIgnoreCase("El Progreso")){
             extraLabel.setText(motagua);
         }
         else if(texto.equalsIgnoreCase("Escuintla")){
-            extraLabel.setText("\"Río Coyolate\" Coordinación para liberación de 2,500 alevines de \n mojarras nativas (tusa, balcera y prieta) con el propósito de contribuir \n y conservar la biodiversidad acuática. \n\"Río María Linda\" Desafortunadamente ¡Nada!");
+            extraLabel.setText(coyolate);
         }
         else if(texto.equalsIgnoreCase("Huehuetenango")){
             extraLabel.setText("\"Río Ixcán\" ¡Desafortunadamente Nada!");
@@ -254,6 +259,36 @@ public class HelloController implements Initializable {
         else if(texto.equalsIgnoreCase("Petén")){
             extraLabel.setText("\"Río La Pasión\" Se ha tratado de firmar acuerdos para combatir la \n contaminación causada por empresas acusadas de la contaminación del \n río.");
         } 
+        else if(texto.equalsIgnoreCase("Quetzaltenango")){
+            extraLabel.setText(samala + naranjo);
+        } 
+        else if(texto.equalsIgnoreCase("Quiché")){
+            extraLabel.setText(motagua);
+        } 
+        else if(texto.equalsIgnoreCase("Retalhuleu")){
+            extraLabel.setText(samala);
+        } 
+        else if(texto.equalsIgnoreCase("Sacatepéquez")){
+            extraLabel.setText(coyolate);
+        } 
+        else if(texto.equalsIgnoreCase("San Marcos")){
+            extraLabel.setText(naranjo + suchiate);
+        } 
+        else if(texto.equalsIgnoreCase("Santa Rosa")){
+            extraLabel.setText("\"Río de los Esclavos\" La delegación del Ministerio de Ambiente y Recursos Naturales MARN \n en Santa Rosa, realizó la entrega de 600 árboles de limón criollo a los \n pobladores de aldeas de la cuenca baja de río los Esclavos,\n  con el objetivo de incrementar la cobertura de árboles \n frutales en esa área.");
+        } 
+        else if(texto.equalsIgnoreCase("Sololá")){
+            extraLabel.setText(motagua);
+        } 
+        else if(texto.equalsIgnoreCase("Suchitepéquez")){
+            extraLabel.setText(coyolate + ican + "\"Río Nahualate\" ¡Desafortunadamente Nada!");
+        } 
+        else if(texto.equalsIgnoreCase("Totonicapán")){
+            extraLabel.setText(samala);
+        } 
+        else if(texto.equalsIgnoreCase("Zacapa")){
+            extraLabel.setText(motagua);
+        } 
         else{
             extraLabel.setText("Desafortunadamente ¡Nada!");
         }
@@ -263,7 +298,7 @@ public class HelloController implements Initializable {
     protected void onSeeBibliography() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bibliography-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 590, 530);
+            Scene scene = new Scene(fxmlLoader.load(), 590, 300);
             BibliographyViewController controller = fxmlLoader.getController();
             controller.setHostServices(_hostServices);
 
@@ -341,7 +376,7 @@ public class HelloController implements Initializable {
             else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Icán")){
                 departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
             }                 
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Nahualate")){
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río de los Nahualate")){
                 departmentsTable.getItems().add(new departamentos("Sólola"));
                 departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
                 departmentsTable.getItems().add(new departamentos("Escuintla"));
@@ -353,7 +388,7 @@ public class HelloController implements Initializable {
             }
             else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Suchiate")){
                 departmentsTable.getItems().add(new departamentos("San Marcos"));
-            }      
+            }            
         }
 
     }
