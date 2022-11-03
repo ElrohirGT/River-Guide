@@ -201,9 +201,9 @@ public class HelloController implements Initializable {
         table.getItems().clear();
         String texto = combobox.getValue().toLowerCase();
         String motagua = "\"Río Motagua\" En la Cuenca del Motagua, se capacitó a 17 932 personas, \n y en lo referente a la reforestación se plantaron 144 mil árboles, para \nlograr la recuperación de 145 hectáreas de zonas degradadas.";
-        String samala = "\"Río Samalá\" El Ministerio de Ambiente y Recursos Naturales (MARN) \n impulsa y da seguimiento a este proyecto. \n En ese marco, se efectuó un taller en el cual \n participaron usuarios de la cuenca y personal del Viceministerio del Agua. \n La actividad tuvo lugar en Santa Cruz Muluá, Retalhuleu.";
-        String naranjo = "\"Río Naranjo\" La cartera tiene como  prioridad el cuidado de las \n cuencas del país; por ello, se han establecido diferentes mesas técnicas \n de trabajo que definen acciones para su resguardo.";
-        String suchiate = "\"Río Suchiate\" La Delegación de San Marcos del Ministerio de \n Ambiente y Recursos Naturales (MARN), hizo una jornada \n de limpieza en la ribera del río Suchiate, \n fronterizo con México, como parte de las actividades de la campaña \n “Hacé tu parte, no más basura”.";
+        String samala = "\"Río Samalá\" El Ministerio de Ambiente y Recursos Naturales (MARN) \n impulsa y da seguimiento a este proyecto. En ese marco, se efectuó un \n taller en el cual participaron usuarios de la cuenca y personal del \n Viceministerio del Agua. La actividad tuvo lugar en Santa Cruz Muluá, \n Retalhuleu.";
+        String naranjo = "\"Río Naranjo\" La cartera tiene como  prioridad el cuidado de las cuencas \n del país; por ello, se han establecido diferentes mesas técnicas de \n trabajo que definen acciones para su resguardo.";
+        String suchiate = "\"Río Suchiate\" La Delegación de San Marcos del Ministerio de Ambiente \n y Recursos Naturales (MARN), hizo una jornada de limpieza \n en la ribera del río Suchiate, \n fronterizo con México, como parte de las actividades de la campaña \n “Hacé tu parte, no más basura”.";
         String coyolate = "\n \"Río Coyolate\" Coordinación para liberación de 2,500 alevines de \n mojarras nativas (tusa, balcera y prieta) con el propósito de contribuir \n y conservar la biodiversidad acuática.";
         String ican = "\"Río Icán\" saneamiento del manto de agua, reforestación y \n recuperación de la biodiversidad.";
         
@@ -260,7 +260,7 @@ public class HelloController implements Initializable {
             extraLabel.setText("\"Río La Pasión\" Se ha tratado de firmar acuerdos para combatir la \n contaminación causada por empresas acusadas de la contaminación del \n río.");
         } 
         else if(texto.equalsIgnoreCase("Quetzaltenango")){
-            extraLabel.setText(samala + naranjo);
+            extraLabel.setText(samala + "\n" + naranjo);
         } 
         else if(texto.equalsIgnoreCase("Quiché")){
             extraLabel.setText(motagua);
@@ -272,7 +272,7 @@ public class HelloController implements Initializable {
             extraLabel.setText(coyolate);
         } 
         else if(texto.equalsIgnoreCase("San Marcos")){
-            extraLabel.setText(naranjo + suchiate);
+            extraLabel.setText(naranjo + "\n" + suchiate);
         } 
         else if(texto.equalsIgnoreCase("Santa Rosa")){
             extraLabel.setText("\"Río de los Esclavos\" La delegación del Ministerio de Ambiente y Recursos Naturales MARN \n en Santa Rosa, realizó la entrega de 600 árboles de limón criollo a los \n pobladores de aldeas de la cuenca baja de río los Esclavos,\n  con el objetivo de incrementar la cobertura de árboles \n frutales en esa área.");
