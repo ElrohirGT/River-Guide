@@ -298,7 +298,7 @@ public class HelloController implements Initializable {
     protected void onSeeBibliography() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bibliography-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 590, 300);
+            Scene scene = new Scene(fxmlLoader.load(), 590, 530);
             BibliographyViewController controller = fxmlLoader.getController();
             controller.setHostServices(_hostServices);
 
