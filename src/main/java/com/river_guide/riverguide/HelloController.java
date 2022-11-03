@@ -244,19 +244,74 @@ public class HelloController implements Initializable {
         }
         if (selectedItem.getNombre() != null) {
             departmentsTable.setVisible(true);
-            if (riversTable.getSelectionModel().getSelectedItem().getNombre() == "Río Motagua") {
+            if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Motagua")) {
                 departmentsTable.getItems().add(new departamentos("Quiché"));
                 departmentsTable.getItems().add(new departamentos("Alta Verapaz"));
                 departmentsTable.getItems().add(new departamentos("Baja Verapaz"));
                 departmentsTable.getItems().add(new departamentos("Sololá"));
                 departmentsTable.getItems().add(new departamentos("Chimaltenango"));
-                departmentsTable.getItems().add(new departamentos("Guatemala"));
+                departmentsTable.getItems().add(new departamentos("Guatemala")); 
                 departmentsTable.getItems().add(new departamentos("Jalapa"));
                 departmentsTable.getItems().add(new departamentos("Chiquimula"));
                 departmentsTable.getItems().add(new departamentos("El progreso"));
                 departmentsTable.getItems().add(new departamentos("Zacapa"));
                 departmentsTable.getItems().add(new departamentos("Izabal"));
             }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Samalá")){
+                departmentsTable.getItems().add(new departamentos("Totonicapán"));
+                departmentsTable.getItems().add(new departamentos("Quetzaltenango"));
+
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Las Vacas")){
+                departmentsTable.getItems().add(new departamentos("Guatemala"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río La Pasión")){
+                departmentsTable.getItems().add(new departamentos("Alta Verapaz"));
+                departmentsTable.getItems().add(new departamentos("Petén"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Ixcán")){
+                departmentsTable.getItems().add(new departamentos("Alta Verapaz"));
+                departmentsTable.getItems().add(new departamentos("Quiché"));
+                departmentsTable.getItems().add(new departamentos("Huehuetenango"));
+                departmentsTable.getItems().add(new departamentos("Guatemala"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Dulce")){
+                departmentsTable.getItems().add(new departamentos("Izabal"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Coyolate")){
+                departmentsTable.getItems().add(new departamentos("Chimaltenango"));
+                departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
+                departmentsTable.getItems().add(new departamentos("Escuintla"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río María Linda")){
+                departmentsTable.getItems().add(new departamentos("Sacatepéquez"));
+                departmentsTable.getItems().add(new departamentos("Guatemala"));
+                departmentsTable.getItems().add(new departamentos("Santa Rosa"));
+                departmentsTable.getItems().add(new departamentos("Escuintla"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Paz")){
+                departmentsTable.getItems().add(new departamentos("Jutiapa"));
+                departmentsTable.getItems().add(new departamentos("Santa Rosa"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río de los Esclavos")){
+                departmentsTable.getItems().add(new departamentos("Santa Rosa"));
+            }                 
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Icán")){
+                departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
+            }                 
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río de los Nahualate")){
+                departmentsTable.getItems().add(new departamentos("Sólola"));
+                departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
+                departmentsTable.getItems().add(new departamentos("Escuintla"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Naranjo")){
+                departmentsTable.getItems().add(new departamentos("San Marcos"));
+                departmentsTable.getItems().add(new departamentos("Quetzaltenango"));
+                departmentsTable.getItems().add(new departamentos("Retalhuleu"));
+            }
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Suchiate")){
+                departmentsTable.getItems().add(new departamentos("San Marcos"));
+            }            
         }
 
     }
