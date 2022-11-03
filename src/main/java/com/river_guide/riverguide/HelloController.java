@@ -376,7 +376,7 @@ public class HelloController implements Initializable {
             else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Icán")){
                 departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
             }                 
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río de los Nahualate")){
+            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Nahualate")){
                 departmentsTable.getItems().add(new departamentos("Sólola"));
                 departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
                 departmentsTable.getItems().add(new departamentos("Escuintla"));
