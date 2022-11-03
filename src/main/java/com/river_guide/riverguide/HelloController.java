@@ -78,6 +78,9 @@ public class HelloController implements Initializable {
     @FXML
     private ImageView imgView;
 
+    @FXML
+    private Label extraLabel;
+
     private ResourceBundle _resourceBundle;
     private HostServices _hostServices;
 
@@ -197,9 +200,11 @@ public class HelloController implements Initializable {
     protected void onbtnClick() {
         table.getItems().clear();
         String texto = combobox.getValue().toLowerCase();
+        String motagua = "\"Río Motagua\" En la Cuenca del Motagua, se capacitó a 17 932 personas, \n y en lo referente a la reforestación se plantaron 144 mil árboles, para \nlograr la recuperación de 145 hectáreas de zonas degradadas.";
 
         imgView.setImage(null);
         imageCaptionLabel.setText("");
+        extraLabel.setText("");
 
         if (!departments.containsKey(texto)) {
             return;
@@ -214,6 +219,43 @@ public class HelloController implements Initializable {
                 imgView.setImage(images.get(river.getNombre()));
                 imageCaptionLabel.setText(river.getNombre());
             }
+        }
+
+        if(texto.equalsIgnoreCase("Guatemala")){
+            extraLabel.setText("\"Río Las Vacas\" El Ministerio de Ambiente y Recursos Naturales (MARN) \n anunció que colocará cercas en el río Las Vacas para recolectar desechos \n sólidos y evitar que lleguen al océano.\n" + motagua);
+        }
+        else if(texto.equalsIgnoreCase("Alta Verapaz")){
+            extraLabel.setText(motagua);
+        }
+        else if(texto.equalsIgnoreCase("Baja Verapaz")){
+            extraLabel.setText(motagua);
+        }
+        else if(texto.equalsIgnoreCase("Chimaltenango")){
+            extraLabel.setText(motagua + "\n \"Río Coyolate\" Coordinación para liberación de 2,500 alevines de \n mojarras nativas (tusa, balcera y prieta) con el propósito de contribuir \n y conservar la biodiversidad acuática.");
+        }
+        else if(texto.equalsIgnoreCase("El Progreso")){
+            extraLabel.setText(motagua);
+        }
+        else if(texto.equalsIgnoreCase("Escuintla")){
+            extraLabel.setText("\"Río Coyolate\" Coordinación para liberación de 2,500 alevines de \n mojarras nativas (tusa, balcera y prieta) con el propósito de contribuir \n y conservar la biodiversidad acuática. \n\"Río María Linda\" Desafortunadamente ¡Nada!");
+        }
+        else if(texto.equalsIgnoreCase("Huehuetenango")){
+            extraLabel.setText("\"Río Ixcán\" ¡Desafortunadamente Nada!");
+        }
+        else if(texto.equalsIgnoreCase("Izabal")){
+            extraLabel.setText(motagua + "\n \"Río Dulce\" se encuentra ubicado dentro del área protegida \"Parque \n Nacional Río Dulce\" el cual protege al ecosistema de Guatemala desde \n el año 1955. ");
+        }
+        else if(texto.equalsIgnoreCase("Jalapa")){
+            extraLabel.setText(motagua);
+        }
+        else if(texto.equalsIgnoreCase("Jutiapa")){
+            extraLabel.setText("\"Río Paz\" organizar y desarrollar de manera coordinada y priorizada en el \n espacio y en el tiempo, las diferentes acciones y actividades que son \n necesarias, para la gestión de los recursos naturales de la cuenca.");
+        }
+        else if(texto.equalsIgnoreCase("Petén")){
+            extraLabel.setText("\"Río La Pasión\" Se ha tratado de firmar acuerdos para combatir la \n contaminación causada por empresas acusadas de la contaminación del \n río.");
+        } 
+        else{
+            extraLabel.setText("Desafortunadamente ¡Nada!");
         }
     }
 

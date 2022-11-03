@@ -60,7 +60,7 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="extraLabel" alignment="CENTER" prefHeight="113.0" prefWidth="397.0" text="Desafortunadamente ¡Nada!" textAlignment="JUSTIFY" />
+                                                <Label fx:id="extraLabel" alignment="CENTER" prefHeight="113.0" prefWidth="397.0" text="¡No has seleccionado ningùn departamento!" textAlignment="JUSTIFY" />
                                              </children>
                                           </VBox>
                                        </children>
