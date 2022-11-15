@@ -18,15 +18,16 @@ import java.sql.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
     Connection conn = null;
-    ResultSet rs= null;
+    ResultSet rs = null;
     Statement st = null;
-    private HashMap<String, rios[]> departments = new HashMap<>();
+    private HashMap<String, ArrayList<rios>> departments = new HashMap<>();
     private HashMap<String, Image> images = new HashMap<>();
     Random random = new Random();
     @FXML
@@ -85,8 +86,8 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resource) {
         combobox.setItems(list);
-        conn= ConnectDB.ConnectMariaDB();
-        String query ="SELECT*FROM contaminacion";
+        conn = ConnectDB.ConnectMariaDB();
+        String query = "SELECT d.Nombre as NombreDept, c.nombre as NombreRio, c.contami FROM contaminacion AS c INNER JOIN departamento AS d ON c.IdDepartamento=d.IdDepartamento;";
         Statement st = null;
         try {
             st = conn.createStatement();
@@ -100,16 +101,21 @@ public class HelloController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        rios rio1;
-        try{
-            while(rs.next()){
-                String nombre = rs.getString("nombre");
+        rios rioDB;
+        try {
+            while (rs.next()) {
+                String nombre = rs.getString("NombreRio");
                 String contami = rs.getString("contami");
-                rio1=new rios(nombre,contami);
-                list2.add(rio1);
+                String department = rs.getString("NombreDept");
+                rioDB = new rios(nombre, contami);
+                list2.add(rioDB);
+                if (!departments.containsKey(department)) {
+                    departments.put(department, new ArrayList<>());
+                }
+                departments.get(department).add(rioDB);
             }
             st.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("There is an Exception.");
             System.out.println(e.getMessage());
         }
@@ -137,52 +143,6 @@ public class HelloController implements Initializable {
 
         rio.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         contami.setCellValueFactory(new PropertyValueFactory<>("contami"));
-
-        var motagua = new rios("Río Motagua", "20,000,000 kg de basura fluyen por el río anualmente");
-        departments.put("quiché", new rios[] { motagua });
-        departments.put("alta verapaz", new rios[] { motagua });
-        departments.put("baja verapaz", new rios[] { motagua });
-        departments.put("sololá", new rios[] { motagua });
-        departments.put("jalapa", new rios[] { motagua });
-        departments.put("chiquimula", new rios[] { motagua });
-        departments.put("el progreso", new rios[] { motagua });
-        departments.put("zacapa", new rios[] { motagua });
-
-        var samala = new rios("Río Samalá", "626,000kg de plástico son emitido anualmente");
-        departments.put("totonicapán", new rios[] { samala });
-        departments.put("retalhuleu", new rios[] { samala });
-
-        var vacas = new rios("Río Las Vacas", "20 mil tonelada van del río las vacas al río Motagua anualmente");
-        departments.put("guatemala", new rios[] { vacas, motagua });
-
-        departments.put("petén", new rios[] { new rios("Río La Pasión",
-                "La Pasión es una de las tragedias ambientales más importantes del país. En el 2015\n químicos fueron vertidos al río, los cuales causaron un envenenamiento de varios\n organismos") });
-
-        departments.put("huehuetenango", new rios[] {
-                new rios("Río Ixcán", "El rastro municipal contamina al río con heces, sangre y restos de animales") });
-
-        departments.put("izabal",
-                new rios[] { motagua, new rios("Río Dulce", "401,000kg de plástico son emitido anualmente") });
-
-        var coyolate = new rios("Río Coyolate", "417,000kg de plástico son emitido anualmente");
-        departments.put("chimaltenango", new rios[] { motagua, coyolate });
-
-        departments.put("sacatepéquez", new rios[] { coyolate });
-
-        departments.put("escuintla",
-                new rios[] { coyolate, new rios("Río María Linda", "1,258,000kg de plástico son emitido anualmente") });
-        departments.put("jutiapa", new rios[] { new rios("Río Paz",
-                "En el 2016 el río fue contaminado con melaza, la cual causó la muerte de varios\n peces") });
-        departments.put("santa rosa", new rios[] { new rios("Río de los Esclavos",
-                "Uno de los contaminantes más grandes al río es la fuente agrícola, o sea, las aguas,\nmieles y pulpa de café") });
-        departments.put("suchitepéquez",
-                new rios[] { coyolate, new rios("Río Icán", "365,000kg de plástico son emitido anualmente"),
-                        new rios("Río Nahualate", "523,000kg de plástico son emitido anualmente") });
-        departments.put("quetzaltenango",
-                new rios[] { samala, new rios("Río Naranjo", "552,000kg de plástico son emitido anualmente") });
-        departments.put("san marcos",
-                new rios[] { new rios("Río Naranjo", "552,000kg de plástico son emitido anualmente"),
-                        new rios("Río Suchiate", "419,000kg de plástico son emitido anualmente") });
 
         for (var riverList : departments.values()) {
             for (var river : riverList) {
@@ -217,9 +177,9 @@ public class HelloController implements Initializable {
             return;
         }
 
-        int imageIndex = random.nextInt(departments.get(texto).length);
-        for (int i = 0; i < departments.get(texto).length; i++) {
-            var river = departments.get(texto)[i];
+        int imageIndex = random.nextInt(departments.get(texto).size());
+        for (int i = 0; i < departments.get(texto).size(); i++) {
+            var river = departments.get(texto).get(i);
             table.getItems().add(river);
 
             if (i == imageIndex) {
