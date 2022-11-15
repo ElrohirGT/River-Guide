@@ -27,7 +27,8 @@ public class HelloController implements Initializable {
     Connection conn = null;
     ResultSet rs = null;
     Statement st = null;
-    private HashMap<String, ArrayList<rios>> departments = new HashMap<>();
+    private HashMap<String, ArrayList<rios>> riversByDepartments = new HashMap<>();
+    private HashMap<String, Department> departmentsByName = new HashMap<>();
     private HashMap<String, Image> images = new HashMap<>();
     Random random = new Random();
     @FXML
@@ -87,7 +88,7 @@ public class HelloController implements Initializable {
     public void initialize(URL location, ResourceBundle resource) {
         combobox.setItems(list);
         conn = ConnectDB.ConnectMariaDB();
-        String query = "SELECT d.Nombre as NombreDept, c.nombre as NombreRio, c.contami FROM contaminacion AS c INNER JOIN departamento AS d ON c.IdDepartamento=d.IdDepartamento;";
+        String query = "SELECT d.IdDepartamento as IdDepartamento, d.Nombre as NombreDept, c.IdRio as IdRio, c.nombre as NombreRio, c.contami FROM contaminacion AS c INNER JOIN departamento AS d ON c.IdDepartamento=d.IdDepartamento;";
         Statement st = null;
         try {
             st = conn.createStatement();
@@ -107,12 +108,18 @@ public class HelloController implements Initializable {
                 String nombre = rs.getString("NombreRio");
                 String contami = rs.getString("contami");
                 String department = rs.getString("NombreDept");
-                rioDB = new rios(nombre, contami);
-                list2.add(rioDB);
-                if (!departments.containsKey(department)) {
-                    departments.put(department, new ArrayList<>());
+                rioDB = new rios(rs.getInt("IdRio"), nombre, contami);
+                if (!list2.contains(rioDB)) {
+                    list2.add(rioDB);
                 }
-                departments.get(department).add(rioDB);
+                if (!riversByDepartments.containsKey(department)) {
+                    riversByDepartments.put(department, new ArrayList<>());
+                }
+                riversByDepartments.get(department).add(rioDB);
+
+                if (!departmentsByName.containsKey(department)) {
+                    departmentsByName.put(department, new Department(rs.getInt("IdDepartamento"), department));
+                }
             }
             st.close();
         } catch (Exception e) {
@@ -144,7 +151,7 @@ public class HelloController implements Initializable {
         rio.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         contami.setCellValueFactory(new PropertyValueFactory<>("contami"));
 
-        for (var riverList : departments.values()) {
+        for (var riverList : riversByDepartments.values()) {
             for (var river : riverList) {
                 if (!images.containsKey(river.getNombre())) {
                     try {
@@ -173,13 +180,13 @@ public class HelloController implements Initializable {
         imageCaptionLabel.setText("");
         extraLabel.setText("");
 
-        if (!departments.containsKey(texto)) {
+        if (!riversByDepartments.containsKey(texto)) {
             return;
         }
 
-        int imageIndex = random.nextInt(departments.get(texto).size());
-        for (int i = 0; i < departments.get(texto).size(); i++) {
-            var river = departments.get(texto).get(i);
+        int imageIndex = random.nextInt(riversByDepartments.get(texto).size());
+        for (int i = 0; i < riversByDepartments.get(texto).size(); i++) {
+            var river = riversByDepartments.get(texto).get(i);
             table.getItems().add(river);
 
             if (i == imageIndex) {
