@@ -8,7 +8,6 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,10 +17,7 @@ import javafx.stage.Stage;
 import java.sql.*;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -84,12 +80,10 @@ public class HelloController implements Initializable {
     @FXML
     private Label extraLabel;
 
-    private ResourceBundle _resourceBundle;
     private HostServices _hostServices;
 
     @Override
     public void initialize(URL location, ResourceBundle resource) {
-        _resourceBundle = resource;
         combobox.setItems(list);
         conn= ConnectDB.ConnectMariaDB();
         String query ="SELECT*FROM contaminacion";
@@ -214,7 +208,7 @@ public class HelloController implements Initializable {
         String suchiate = "\"Río Suchiate\" La Delegación de San Marcos del Ministerio de Ambiente \n y Recursos Naturales (MARN), hizo una jornada de limpieza \n en la ribera del río Suchiate, \n fronterizo con México, como parte de las actividades de la campaña \n “Hacé tu parte, no más basura”.";
         String coyolate = "\n \"Río Coyolate\" Coordinación para liberación de 2,500 alevines de \n mojarras nativas (tusa, balcera y prieta) con el propósito de contribuir \n y conservar la biodiversidad acuática.";
         String ican = "\"Río Icán\" saneamiento del manto de agua, reforestación y \n recuperación de la biodiversidad.";
-        
+
         imgView.setImage(null);
         imageCaptionLabel.setText("");
         extraLabel.setText("");
@@ -234,70 +228,55 @@ public class HelloController implements Initializable {
             }
         }
 
-        if(texto.equalsIgnoreCase("Guatemala")){
-            extraLabel.setText("\"Río Las Vacas\" El Ministerio de Ambiente y Recursos Naturales (MARN) \n anunció que colocará cercas en el río Las Vacas para recolectar desechos \n sólidos y evitar que lleguen al océano.\n" + motagua);
-        }
-        else if(texto.equalsIgnoreCase("Alta Verapaz")){
+        if (texto.equalsIgnoreCase("Guatemala")) {
+            extraLabel.setText(
+                    "\"Río Las Vacas\" El Ministerio de Ambiente y Recursos Naturales (MARN) \n anunció que colocará cercas en el río Las Vacas para recolectar desechos \n sólidos y evitar que lleguen al océano.\n"
+                            + motagua);
+        } else if (texto.equalsIgnoreCase("Alta Verapaz")) {
             extraLabel.setText(motagua);
-        }
-        else if(texto.equalsIgnoreCase("Baja Verapaz")){
+        } else if (texto.equalsIgnoreCase("Baja Verapaz")) {
             extraLabel.setText(motagua);
-        }
-        else if(texto.equalsIgnoreCase("Chimaltenango")){
+        } else if (texto.equalsIgnoreCase("Chimaltenango")) {
             extraLabel.setText(motagua + coyolate);
-        }
-        else if(texto.equalsIgnoreCase("El Progreso")){
+        } else if (texto.equalsIgnoreCase("El Progreso")) {
             extraLabel.setText(motagua);
-        }
-        else if(texto.equalsIgnoreCase("Escuintla")){
+        } else if (texto.equalsIgnoreCase("Escuintla")) {
             extraLabel.setText(coyolate);
-        }
-        else if(texto.equalsIgnoreCase("Huehuetenango")){
+        } else if (texto.equalsIgnoreCase("Huehuetenango")) {
             extraLabel.setText("\"Río Ixcán\" ¡Desafortunadamente Nada!");
-        }
-        else if(texto.equalsIgnoreCase("Izabal")){
-            extraLabel.setText(motagua + "\n \"Río Dulce\" se encuentra ubicado dentro del área protegida \"Parque \n Nacional Río Dulce\" el cual protege al ecosistema de Guatemala desde \n el año 1955. ");
-        }
-        else if(texto.equalsIgnoreCase("Jalapa")){
+        } else if (texto.equalsIgnoreCase("Izabal")) {
+            extraLabel.setText(motagua
+                    + "\n \"Río Dulce\" se encuentra ubicado dentro del área protegida \"Parque \n Nacional Río Dulce\" el cual protege al ecosistema de Guatemala desde \n el año 1955. ");
+        } else if (texto.equalsIgnoreCase("Jalapa")) {
             extraLabel.setText(motagua);
-        }
-        else if(texto.equalsIgnoreCase("Jutiapa")){
-            extraLabel.setText("\"Río Paz\" organizar y desarrollar de manera coordinada y priorizada en el \n espacio y en el tiempo, las diferentes acciones y actividades que son \n necesarias, para la gestión de los recursos naturales de la cuenca.");
-        }
-        else if(texto.equalsIgnoreCase("Petén")){
-            extraLabel.setText("\"Río La Pasión\" Se ha tratado de firmar acuerdos para combatir la \n contaminación causada por empresas acusadas de la contaminación del \n río.");
-        } 
-        else if(texto.equalsIgnoreCase("Quetzaltenango")){
+        } else if (texto.equalsIgnoreCase("Jutiapa")) {
+            extraLabel.setText(
+                    "\"Río Paz\" organizar y desarrollar de manera coordinada y priorizada en el \n espacio y en el tiempo, las diferentes acciones y actividades que son \n necesarias, para la gestión de los recursos naturales de la cuenca.");
+        } else if (texto.equalsIgnoreCase("Petén")) {
+            extraLabel.setText(
+                    "\"Río La Pasión\" Se ha tratado de firmar acuerdos para combatir la \n contaminación causada por empresas acusadas de la contaminación del \n río.");
+        } else if (texto.equalsIgnoreCase("Quetzaltenango")) {
             extraLabel.setText(samala + "\n" + naranjo);
-        } 
-        else if(texto.equalsIgnoreCase("Quiché")){
+        } else if (texto.equalsIgnoreCase("Quiché")) {
             extraLabel.setText(motagua);
-        } 
-        else if(texto.equalsIgnoreCase("Retalhuleu")){
+        } else if (texto.equalsIgnoreCase("Retalhuleu")) {
             extraLabel.setText(samala);
-        } 
-        else if(texto.equalsIgnoreCase("Sacatepéquez")){
+        } else if (texto.equalsIgnoreCase("Sacatepéquez")) {
             extraLabel.setText(coyolate);
-        } 
-        else if(texto.equalsIgnoreCase("San Marcos")){
+        } else if (texto.equalsIgnoreCase("San Marcos")) {
             extraLabel.setText(naranjo + "\n" + suchiate);
-        } 
-        else if(texto.equalsIgnoreCase("Santa Rosa")){
-            extraLabel.setText("\"Río de los Esclavos\" La delegación del Ministerio de Ambiente y Recursos Naturales MARN \n en Santa Rosa, realizó la entrega de 600 árboles de limón criollo a los \n pobladores de aldeas de la cuenca baja de río los Esclavos,\n  con el objetivo de incrementar la cobertura de árboles \n frutales en esa área.");
-        } 
-        else if(texto.equalsIgnoreCase("Sololá")){
+        } else if (texto.equalsIgnoreCase("Santa Rosa")) {
+            extraLabel.setText(
+                    "\"Río de los Esclavos\" La delegación del Ministerio de Ambiente y Recursos Naturales MARN \n en Santa Rosa, realizó la entrega de 600 árboles de limón criollo a los \n pobladores de aldeas de la cuenca baja de río los Esclavos,\n  con el objetivo de incrementar la cobertura de árboles \n frutales en esa área.");
+        } else if (texto.equalsIgnoreCase("Sololá")) {
             extraLabel.setText(motagua);
-        } 
-        else if(texto.equalsIgnoreCase("Suchitepéquez")){
+        } else if (texto.equalsIgnoreCase("Suchitepéquez")) {
             extraLabel.setText(coyolate + ican + "\"Río Nahualate\" ¡Desafortunadamente Nada!");
-        } 
-        else if(texto.equalsIgnoreCase("Totonicapán")){
+        } else if (texto.equalsIgnoreCase("Totonicapán")) {
             extraLabel.setText(samala);
-        } 
-        else if(texto.equalsIgnoreCase("Zacapa")){
+        } else if (texto.equalsIgnoreCase("Zacapa")) {
             extraLabel.setText(motagua);
-        } 
-        else{
+        } else {
             extraLabel.setText("Desafortunadamente ¡Nada!");
         }
     }
@@ -335,68 +314,60 @@ public class HelloController implements Initializable {
                 departmentsTable.getItems().add(new departamentos("Baja Verapaz"));
                 departmentsTable.getItems().add(new departamentos("Sololá"));
                 departmentsTable.getItems().add(new departamentos("Chimaltenango"));
-                departmentsTable.getItems().add(new departamentos("Guatemala")); 
+                departmentsTable.getItems().add(new departamentos("Guatemala"));
                 departmentsTable.getItems().add(new departamentos("Jalapa"));
                 departmentsTable.getItems().add(new departamentos("Chiquimula"));
                 departmentsTable.getItems().add(new departamentos("El progreso"));
                 departmentsTable.getItems().add(new departamentos("Zacapa"));
                 departmentsTable.getItems().add(new departamentos("Izabal"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Samalá")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Samalá")) {
                 departmentsTable.getItems().add(new departamentos("Totonicapán"));
                 departmentsTable.getItems().add(new departamentos("Quetzaltenango"));
 
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Las Vacas")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre()
+                    .equalsIgnoreCase("Río Las Vacas")) {
                 departmentsTable.getItems().add(new departamentos("Guatemala"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río La Pasión")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre()
+                    .equalsIgnoreCase("Río La Pasión")) {
                 departmentsTable.getItems().add(new departamentos("Alta Verapaz"));
                 departmentsTable.getItems().add(new departamentos("Petén"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Ixcán")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Ixcán")) {
                 departmentsTable.getItems().add(new departamentos("Alta Verapaz"));
                 departmentsTable.getItems().add(new departamentos("Quiché"));
                 departmentsTable.getItems().add(new departamentos("Huehuetenango"));
                 departmentsTable.getItems().add(new departamentos("Guatemala"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Dulce")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Dulce")) {
                 departmentsTable.getItems().add(new departamentos("Izabal"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Coyolate")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Coyolate")) {
                 departmentsTable.getItems().add(new departamentos("Chimaltenango"));
                 departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
                 departmentsTable.getItems().add(new departamentos("Escuintla"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río María Linda")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre()
+                    .equalsIgnoreCase("Río María Linda")) {
                 departmentsTable.getItems().add(new departamentos("Sacatepéquez"));
                 departmentsTable.getItems().add(new departamentos("Guatemala"));
                 departmentsTable.getItems().add(new departamentos("Santa Rosa"));
                 departmentsTable.getItems().add(new departamentos("Escuintla"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Paz")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Paz")) {
                 departmentsTable.getItems().add(new departamentos("Jutiapa"));
                 departmentsTable.getItems().add(new departamentos("Santa Rosa"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río de los Esclavos")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre()
+                    .equalsIgnoreCase("Río de los Esclavos")) {
                 departmentsTable.getItems().add(new departamentos("Santa Rosa"));
-            }                 
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Icán")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Icán")) {
                 departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
-            }                 
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Nahualate")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre()
+                    .equalsIgnoreCase("Río Nahualate")) {
                 departmentsTable.getItems().add(new departamentos("Sólola"));
                 departmentsTable.getItems().add(new departamentos("Suchitepéquez"));
                 departmentsTable.getItems().add(new departamentos("Escuintla"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Naranjo")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Naranjo")) {
                 departmentsTable.getItems().add(new departamentos("San Marcos"));
                 departmentsTable.getItems().add(new departamentos("Quetzaltenango"));
                 departmentsTable.getItems().add(new departamentos("Retalhuleu"));
-            }
-            else if(riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Suchiate")){
+            } else if (riversTable.getSelectionModel().getSelectedItem().getNombre().equalsIgnoreCase("Río Suchiate")) {
                 departmentsTable.getItems().add(new departamentos("San Marcos"));
-            }            
+            }
         }
 
     }
