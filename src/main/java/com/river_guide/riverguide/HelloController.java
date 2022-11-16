@@ -88,7 +88,7 @@ public class HelloController implements Initializable {
     public void initialize(URL location, ResourceBundle resource) {
         combobox.setItems(list);
         conn = ConnectDB.ConnectMariaDB();
-        String query = "SELECT d.IdDepartamento as IdDepartamento, d.Nombre as NombreDept, c.IdRio as IdRio, c.nombre as NombreRio, c.contami FROM contaminacion AS c INNER JOIN departamento AS d ON c.IdDepartamento=d.IdDepartamento;";
+        String query = "SELECT d.IdDepartamento as IdDepartamento, d.Nombre as NombreDept, c.IdRio as IdRio, c.nombre as NombreRio, c.contami, ExtraInfo FROM rio AS c INNER JOIN departamento AS d ON c.IdDepartamento=d.IdDepartamento;";
         Statement st = null;
         try {
             st = conn.createStatement();
@@ -108,7 +108,8 @@ public class HelloController implements Initializable {
                 String nombre = rs.getString("NombreRio");
                 String contami = rs.getString("contami");
                 String department = rs.getString("NombreDept");
-                rioDB = new rios(rs.getInt("IdRio"), nombre, contami);
+                String extraInfo = rs.getString("ExtraInfo");
+                rioDB = new rios(rs.getInt("IdRio"), nombre, contami, extraInfo);
                 if (!list2.contains(rioDB)) {
                     list2.add(rioDB);
                 }
@@ -173,7 +174,7 @@ public class HelloController implements Initializable {
         String samala = "\"Río Samalá\" El Ministerio de Ambiente y Recursos Naturales (MARN) \n impulsa y da seguimiento a este proyecto. En ese marco, se efectuó un \n taller en el cual participaron usuarios de la cuenca y personal del \n Viceministerio del Agua. La actividad tuvo lugar en Santa Cruz Muluá, \n Retalhuleu.";
         String naranjo = "\"Río Naranjo\" La cartera tiene como  prioridad el cuidado de las cuencas \n del país; por ello, se han establecido diferentes mesas técnicas de \n trabajo que definen acciones para su resguardo.";
         String suchiate = "\"Río Suchiate\" La Delegación de San Marcos del Ministerio de Ambiente \n y Recursos Naturales (MARN), hizo una jornada de limpieza \n en la ribera del río Suchiate, \n fronterizo con México, como parte de las actividades de la campaña \n “Hacé tu parte, no más basura”.";
-        String coyolate = "\n \"Río Coyolate\" Coordinación para liberación de 2,500 alevines de \n mojarras nativas (tusa, balcera y prieta) con el propósito de contribuir \n y conservar la biodiversidad acuática.";
+        String coyolate = "\n \"Río Coyolate\"";
         String ican = "\"Río Icán\" saneamiento del manto de agua, reforestación y \n recuperación de la biodiversidad.";
 
         imgView.setImage(null);
@@ -184,7 +185,8 @@ public class HelloController implements Initializable {
             return;
         }
 
-        int imageIndex = random.nextInt(riversByDepartments.get(texto).size());
+        final var rivers = riversByDepartments.get(texto);
+        int imageIndex = random.nextInt(rivers.size());
         for (int i = 0; i < riversByDepartments.get(texto).size(); i++) {
             var river = riversByDepartments.get(texto).get(i);
             table.getItems().add(river);
@@ -195,57 +197,10 @@ public class HelloController implements Initializable {
             }
         }
 
-        if (texto.equalsIgnoreCase("Guatemala")) {
-            extraLabel.setText(
-                    "\"Río Las Vacas\" El Ministerio de Ambiente y Recursos Naturales (MARN) \n anunció que colocará cercas en el río Las Vacas para recolectar desechos \n sólidos y evitar que lleguen al océano.\n"
-                            + motagua);
-        } else if (texto.equalsIgnoreCase("Alta Verapaz")) {
-            extraLabel.setText(motagua);
-        } else if (texto.equalsIgnoreCase("Baja Verapaz")) {
-            extraLabel.setText(motagua);
-        } else if (texto.equalsIgnoreCase("Chimaltenango")) {
-            extraLabel.setText(motagua + coyolate);
-        } else if (texto.equalsIgnoreCase("El Progreso")) {
-            extraLabel.setText(motagua);
-        } else if (texto.equalsIgnoreCase("Escuintla")) {
-            extraLabel.setText(coyolate);
-        } else if (texto.equalsIgnoreCase("Huehuetenango")) {
-            extraLabel.setText("\"Río Ixcán\" ¡Desafortunadamente Nada!");
-        } else if (texto.equalsIgnoreCase("Izabal")) {
-            extraLabel.setText(motagua
-                    + "\n \"Río Dulce\" se encuentra ubicado dentro del área protegida \"Parque \n Nacional Río Dulce\" el cual protege al ecosistema de Guatemala desde \n el año 1955. ");
-        } else if (texto.equalsIgnoreCase("Jalapa")) {
-            extraLabel.setText(motagua);
-        } else if (texto.equalsIgnoreCase("Jutiapa")) {
-            extraLabel.setText(
-                    "\"Río Paz\" organizar y desarrollar de manera coordinada y priorizada en el \n espacio y en el tiempo, las diferentes acciones y actividades que son \n necesarias, para la gestión de los recursos naturales de la cuenca.");
-        } else if (texto.equalsIgnoreCase("Petén")) {
-            extraLabel.setText(
-                    "\"Río La Pasión\" Se ha tratado de firmar acuerdos para combatir la \n contaminación causada por empresas acusadas de la contaminación del \n río.");
-        } else if (texto.equalsIgnoreCase("Quetzaltenango")) {
-            extraLabel.setText(samala + "\n" + naranjo);
-        } else if (texto.equalsIgnoreCase("Quiché")) {
-            extraLabel.setText(motagua);
-        } else if (texto.equalsIgnoreCase("Retalhuleu")) {
-            extraLabel.setText(samala);
-        } else if (texto.equalsIgnoreCase("Sacatepéquez")) {
-            extraLabel.setText(coyolate);
-        } else if (texto.equalsIgnoreCase("San Marcos")) {
-            extraLabel.setText(naranjo + "\n" + suchiate);
-        } else if (texto.equalsIgnoreCase("Santa Rosa")) {
-            extraLabel.setText(
-                    "\"Río de los Esclavos\" La delegación del Ministerio de Ambiente y Recursos Naturales MARN \n en Santa Rosa, realizó la entrega de 600 árboles de limón criollo a los \n pobladores de aldeas de la cuenca baja de río los Esclavos,\n  con el objetivo de incrementar la cobertura de árboles \n frutales en esa área.");
-        } else if (texto.equalsIgnoreCase("Sololá")) {
-            extraLabel.setText(motagua);
-        } else if (texto.equalsIgnoreCase("Suchitepéquez")) {
-            extraLabel.setText(coyolate + ican + "\"Río Nahualate\" ¡Desafortunadamente Nada!");
-        } else if (texto.equalsIgnoreCase("Totonicapán")) {
-            extraLabel.setText(samala);
-        } else if (texto.equalsIgnoreCase("Zacapa")) {
-            extraLabel.setText(motagua);
-        } else {
-            extraLabel.setText("Desafortunadamente ¡Nada!");
-        }
+        extraLabel.setText(
+                rivers.stream()
+                        .map(r -> r.getNombre() + ": " + r.getExtraInfo())
+                        .reduce("", (s1, s2) -> String.format("%s\n%s", s1, s2)));
     }
 
     @FXML

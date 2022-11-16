@@ -6,12 +6,17 @@ public class rios {
     private int _id;
     private SimpleStringProperty _nombre;
     private SimpleStringProperty _contami;
+    private String _extraInfo;
 
-    public rios(int id, String nombre, String contami) {
+    public rios(int id, String nombre, String contami, String extraInfo) {
         _id = id;
         _nombre = new SimpleStringProperty(nombre);
         _contami = new SimpleStringProperty(contami);
+        _extraInfo = extraInfo;
+    }
 
+    public String getExtraInfo() {
+        return _extraInfo;
     }
 
     public int getId() {
