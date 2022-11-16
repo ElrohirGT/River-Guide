@@ -6,9 +6,11 @@ public class ConnectDB {
     public static Connection ConnectMariaDB() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mariadb://sql734.main-hosting.eu/u991565456_riverguide",
+                    "u991565456_grupo3", "Grupo.3POO");
             // Connection conn =
-            // DriverManager.getConnection("jdbc:mariadb://sql734.main-hosting.eu/u991565456_riverguide","u991565456_grupo3","Grupo.3POO");
-            Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost/rios", "Grupo3", "POO2022");
+            // DriverManager.getConnection("jdbc:mariadb://localhost/rios", "Grupo3",
+            // "POO2022");
             System.out.println("Connection Success");
             return conn;
         } catch (Exception e) {
