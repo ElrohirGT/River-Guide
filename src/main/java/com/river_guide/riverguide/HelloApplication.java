@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
         controller.setHostServices(getHostServices());
 
         stage.setTitle("River Guide");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
