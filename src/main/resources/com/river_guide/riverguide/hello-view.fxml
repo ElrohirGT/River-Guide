@@ -49,9 +49,9 @@
                                              <children>
                                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="333.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
                                              <children>
-                                                <Button fx:id="leftButton" mnemonicParsing="false" text="&lt;" />
+                                                <Button fx:id="leftButton" mnemonicParsing="false" onAction="#onbtnClick" text="&lt;" />
                                                 <ImageView fx:id="ImagenCarrusel" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Button fx:id="rightButton" mnemonicParsing="false" text="&gt;" />
+                                                <Button fx:id="rightButton" mnemonicParsing="false" onAction="#onbtnClick" text="&gt;" />
                                              </children>
                                              </HBox>
                                              <Label fx:id="imageCaptionLabel" alignment="CENTER" prefHeight="18.0" prefWidth="285.0" textAlignment="CENTER" />

@@ -56,6 +56,7 @@ public class HelloController implements Initializable {
     private HashMap<String, ArrayList<River>> riversByDepartments = new HashMap<>();
     private HashMap<String, Department> departmentsByName = new HashMap<>();
     private HashMap<String, Image> images = new HashMap<>();
+    private List<String> listanombreList = new ArrayList<String>();
     Random random = new Random();
     @FXML
     private TextField texto;
@@ -336,18 +337,18 @@ public class HelloController implements Initializable {
         }
 
         final var rivers = riversByDepartments.get(texto);
-        /** 
+        
         int imageIndex = random.nextInt(rivers.size());
         for (int i = 0; i < riversByDepartments.get(texto).size(); i++) {
             var river = riversByDepartments.get(texto).get(i);
             table.getItems().add(river);
 
             if (i == imageIndex) {
-                imgView.setImage(images.get(river.getNombre()));
+                ImagenCarrusel.setImage(images.get(river.getNombre()));
                 imageCaptionLabel.setText(river.getNombre());
             }
         }
-        */
+        
 
         extraLabel.setText(
                 rivers.stream()
@@ -358,8 +359,6 @@ public class HelloController implements Initializable {
     
     @FXML
     protected void start(Stage primaryStage) {
-        String texto = combobox.getValue().toLowerCase();
-        final var rivers = riversByDepartments.get(texto);
         // images in src folder.
         try {
             lista.add("Río Coyolate.jpg");
@@ -379,10 +378,7 @@ public class HelloController implements Initializable {
     
             GridPane root = new GridPane();
             root.setAlignment(Pos.CENTER);
-    
-            lbutton = new Button("<");
-            rButton = new Button(">");
-    
+            
             Image images[] = new Image[lista.size()];
             for (int i = 0; i < lista.size(); i++) {
                 images[i] = new Image(lista.get(i));
@@ -406,6 +402,7 @@ public class HelloController implements Initializable {
                     j = 0;
                 }
                 ImagenCarrusel.setImage(images[j]);
+                
     
             });
             lbutton.setOnAction(e -> {
@@ -423,7 +420,7 @@ public class HelloController implements Initializable {
             HBox hBox = new HBox();
             hBox.setSpacing(15);
             hBox.setAlignment(Pos.CENTER);
-            // hBox.getChildren().addAll(lbutton, imageView, rButton);
+            //hBox.getChildren().addAll(lbutton, ImagenCarrusel, rButton);
             hBox.getChildren().addAll(ImagenCarrusel);
     
             root.add(hBox, 1, 1);
