@@ -25,30 +25,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.ResourceBundle;
- 
-import java.util.ArrayList;
+
 import java.util.List;
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 public class HelloController implements Initializable {
-    
+
     private List<String> lista = new ArrayList<String>();
     int j = 0;
     double orgCliskSceneX, orgReleaseSceneX;
     Button lbutton, rButton;
-     
-
 
     Connection conn = null;
     ResultSet rs = null;
@@ -337,7 +323,7 @@ public class HelloController implements Initializable {
         }
 
         final var rivers = riversByDepartments.get(texto);
-        
+
         int imageIndex = random.nextInt(rivers.size());
         for (int i = 0; i < riversByDepartments.get(texto).size(); i++) {
             var river = riversByDepartments.get(texto).get(i);
@@ -348,169 +334,12 @@ public class HelloController implements Initializable {
                 imageCaptionLabel.setText(river.getNombre());
             }
         }
-        
 
         extraLabel.setText(
                 rivers.stream()
                         .map(r -> r.getNombre() + ": " + r.getExtraInfo())
                         .reduce("", (s1, s2) -> String.format("%s\n%s", s1, s2)));
     }
-
-    
-    @FXML
-    protected void start(Stage primaryStage) {
-        // images in src folder.
-        try {
-            lista.add("Río Coyolate.jpg");
-            lista.add("Río de los Esclavos.jpg");
-            lista.add("Río Dulce.jpg");
-            lista.add("Río Icán.jpg");
-            lista.add("Río Ixcán.jpg");
-            lista.add("Río La Pasión.jpg");
-            lista.add("Río Las Vacas.jpg");
-            lista.add("Río María Linda.jpg");
-            lista.add("Río Motagua.jpg");
-            lista.add("Río Nahualate.jpg");
-            lista.add("Río Naranjo.jpg");
-            lista.add("Río Paz.jpg");
-            lista.add("Río Samalá.jpg");
-            lista.add("Río Suchiate.jpg");
-    
-            GridPane root = new GridPane();
-            root.setAlignment(Pos.CENTER);
-            
-            Image images[] = new Image[lista.size()];
-            for (int i = 0; i < lista.size(); i++) {
-                images[i] = new Image(lista.get(i));
-            }
-    
-            ImagenCarrusel = new ImageView(images[j]);
-            ImagenCarrusel.setCursor(Cursor.CLOSED_HAND);
-       
-            ImagenCarrusel.setOnMouseReleased(e -> {
-                orgReleaseSceneX = e.getSceneX();
-                if (orgCliskSceneX > orgReleaseSceneX) {
-                    lbutton.fire();
-                } else {
-                    rButton.fire();
-                }
-            });
-    
-            rButton.setOnAction(e -> {
-                j = j + 1;
-                if (j == lista.size()) {
-                    j = 0;
-                }
-                ImagenCarrusel.setImage(images[j]);
-                
-    
-            });
-            lbutton.setOnAction(e -> {
-                j = j - 1;
-                if (j == 0 || j > lista.size() + 1 || j == -1) {
-                    j = lista.size() - 1;
-                }
-                ImagenCarrusel.setImage(images[j]);
-    
-            });
-    
-            ImagenCarrusel.setFitHeight(100);
-            ImagenCarrusel.setFitWidth(300);
-    
-            HBox hBox = new HBox();
-            hBox.setSpacing(15);
-            hBox.setAlignment(Pos.CENTER);
-            //hBox.getChildren().addAll(lbutton, ImagenCarrusel, rButton);
-            hBox.getChildren().addAll(ImagenCarrusel);
-    
-            root.add(hBox, 1, 1);
-            Scene scene = new Scene(root, 800, 300);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    /**
-     * @FXML
-     *       protected void start(Stage primaryStage) {
-     *       // images in src folder.
-     *       try {
-     *       list.add("Río Coyolate.jpg");
-     *       list.add("Río de los Esclavos.jpg");
-     *       list.add("Río Dulce.jpg");
-     *       list.add("Río Icán.jpg");
-     *       list.add("Río Ixcán.jpg");
-     *       list.add("Río La Pasión.jpg");
-     *       list.add("Río Las Vacas.jpg");
-     *       list.add("Río María Linda.jpg");
-     *       list.add("Río Motagua.jpg");
-     *       list.add("Río Nahualate.jpg");
-     *       list.add("Río Naranjo.jpg");
-     *       list.add("Río Paz.jpg");
-     *       list.add("Río Samalá.jpg");
-     *       list.add("Río Suchiate.jpg");
-     * 
-     * 
-     *       GridPane root = new GridPane();
-     *       root.setAlignment(Pos.CENTER);
-     * 
-     *       lbutton = new Button("<");
-     *       rButton = new Button(">");
-     * 
-     *       Image images[] = new Image[list.size()];
-     *       for (int i = 0; i < list.size(); i++) {
-     *       images[i] = new Image(list.get(i));
-     *       }
-     * 
-     *       ImagenCarrusel = new ImageView(images[j]);
-     *       ImagenCarrusel.setCursor(Cursor.CLOSED_HAND);
-     * 
-     *       ImagenCarrusel.setOnMouseReleased(e -> {
-     *       orgReleaseSceneX = e.getSceneX();
-     *       if (orgCliskSceneX > orgReleaseSceneX) {
-     *       lbutton.fire();
-     *       } else {
-     *       rButton.fire();
-     *       }
-     *       });
-     * 
-     *       rButton.setOnAction(e -> {
-     *       j = j + 1;
-     *       if (j == list.size()) {
-     *       j = 0;
-     *       }
-     *       ImagenCarrusel.setImage(images[j]);
-     * 
-     *       });
-     *       lbutton.setOnAction(e -> {
-     *       j = j - 1;
-     *       if (j == 0 || j > list.size() + 1 || j == -1) {
-     *       j = list.size() - 1;
-     *       }
-     *       ImagenCarrusel.setImage(images[j]);
-     * 
-     *       });
-     * 
-     *       ImagenCarrusel.setFitHeight(100);
-     *       ImagenCarrusel.setFitWidth(300);
-     * 
-     *       HBox hBox = new HBox();
-     *       hBox.setSpacing(15);
-     *       hBox.setAlignment(Pos.CENTER);
-     *       // hBox.getChildren().addAll(lbutton, imageView, rButton);
-     *       hBox.getChildren().addAll(ImagenCarrusel);
-     * 
-     *       root.add(hBox, 1, 1);
-     *       Scene scene = new Scene(root, 800, 300);
-     *       primaryStage.setScene(scene);
-     *       primaryStage.show();
-     *       } catch (Exception e) {
-     *       e.printStackTrace();
-     *       }
-     *       }
-     */
 
     @FXML
     protected void onSeeBibliography() {
