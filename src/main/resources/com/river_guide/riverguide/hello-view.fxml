@@ -98,24 +98,15 @@
                                        <TableColumn fx:id="contami2" prefWidth="344.1999816894531" text="Contaminacion" />
                                    </columns>
                                </TableView>
-                              <SplitPane dividerPositions="0.36" prefHeight="160.0" prefWidth="200.0">
-                                <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="250.0">
-                                       <children>
-                                           <TableView fx:id="departmentsTable" prefHeight="150.0" prefWidth="246.0" visible="false">
-                                               <columns>
-                                                   <TableColumn fx:id="depa" prefWidth="250.0" text="Departamentos afectados" />
-                                               </columns>
-                                           </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="250.0">
-                                       <children>
-                                          <Label fx:id="label1" layoutX="185.0" layoutY="5.0" text="Información" />
-                                          <TextArea fx:id="info" disable="true" layoutX="-2.0" layoutY="24.0" prefHeight="102.0" prefWidth="438.0" />
-                                       </children></AnchorPane>
-                                </items>
-                              </SplitPane>
+                              <HBox alignment="CENTER" prefHeight="133.0" prefWidth="683.0">
+                                 <children>
+                                     <TableView fx:id="departmentsTable" prefHeight="150.0" prefWidth="246.0" visible="false">
+                                         <columns>
+                                             <TableColumn fx:id="depa" prefWidth="250.0" text="Departamentos afectados" />
+                                         </columns>
+                                     </TableView>
+                                 </children>
+                              </HBox>
                               <Button fx:id="bibliographyButton" mnemonicParsing="false" onAction="#onSeeBibliography" text="Ver Referencias" />
                            </children></VBox>
                      </children></AnchorPane>
