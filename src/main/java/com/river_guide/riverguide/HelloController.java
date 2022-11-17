@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-/** 
+ 
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
@@ -43,16 +43,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-*/
+
 
 
 public class HelloController implements Initializable {
-    /* 
+     
     private List<String> lista = new ArrayList<String>();
     int j = 0;
     double orgCliskSceneX, orgReleaseSceneX;
     Button lbutton, rButton;
-    */
+    
 
     Connection conn = null;
     ResultSet rs = null;
@@ -105,9 +105,6 @@ public class HelloController implements Initializable {
 
     @FXML
     private TableColumn<rios, String> contami;
-
-    @FXML
-    private ImageView imgView;
 
     @FXML
     private Label extraLabel;
@@ -219,7 +216,7 @@ public class HelloController implements Initializable {
         String coyolate = "\n \"Río Coyolate\"";
         String ican = "\"Río Icán\" saneamiento del manto de agua, reforestación y \n recuperación de la biodiversidad.";
 
-        imgView.setImage(null);
+        ImagenCarrusel.setImage(null);
         imageCaptionLabel.setText("");
         extraLabel.setText("");
 
@@ -229,6 +226,7 @@ public class HelloController implements Initializable {
         
         
         final var rivers = riversByDepartments.get(texto);
+        /** 
         int imageIndex = random.nextInt(rivers.size());
         for (int i = 0; i < riversByDepartments.get(texto).size(); i++) {
             var river = riversByDepartments.get(texto).get(i);
@@ -239,6 +237,7 @@ public class HelloController implements Initializable {
                 imageCaptionLabel.setText(river.getNombre());
             }
         }
+        */
 
         extraLabel.setText(
                 rivers.stream()
@@ -246,26 +245,27 @@ public class HelloController implements Initializable {
                         .reduce("", (s1, s2) -> String.format("%s\n%s", s1, s2)));
     }
 
-    /** 
+     
     @FXML
     protected void start(Stage primaryStage) {
+        String texto = combobox.getValue().toLowerCase();
+        final var rivers = riversByDepartments.get(texto);
         // images in src folder.
         try {
-            list.add("Río Coyolate.jpg");
-            list.add("Río de los Esclavos.jpg");
-            list.add("Río Dulce.jpg");
-            list.add("Río Icán.jpg");
-            list.add("Río Ixcán.jpg");
-            list.add("Río La Pasión.jpg");
-            list.add("Río Las Vacas.jpg");
-            list.add("Río María Linda.jpg");
-            list.add("Río Motagua.jpg");
-            list.add("Río Nahualate.jpg");
-            list.add("Río Naranjo.jpg");
-            list.add("Río Paz.jpg");
-            list.add("Río Samalá.jpg");
-            list.add("Río Suchiate.jpg");
-
+            lista.add("Río Coyolate.jpg");
+            lista.add("Río de los Esclavos.jpg");
+            lista.add("Río Dulce.jpg");
+            lista.add("Río Icán.jpg");
+            lista.add("Río Ixcán.jpg");
+            lista.add("Río La Pasión.jpg");
+            lista.add("Río Las Vacas.jpg");
+            lista.add("Río María Linda.jpg");
+            lista.add("Río Motagua.jpg");
+            lista.add("Río Nahualate.jpg");
+            lista.add("Río Naranjo.jpg");
+            lista.add("Río Paz.jpg");
+            lista.add("Río Samalá.jpg");
+            lista.add("Río Suchiate.jpg");
     
             GridPane root = new GridPane();
             root.setAlignment(Pos.CENTER);
@@ -273,9 +273,9 @@ public class HelloController implements Initializable {
             lbutton = new Button("<");
             rButton = new Button(">");
     
-            Image images[] = new Image[list.size()];
-            for (int i = 0; i < list.size(); i++) {
-                images[i] = new Image(list.get(i));
+            Image images[] = new Image[lista.size()];
+            for (int i = 0; i < lista.size(); i++) {
+                images[i] = new Image(lista.get(i));
             }
     
             ImagenCarrusel = new ImageView(images[j]);
@@ -292,7 +292,7 @@ public class HelloController implements Initializable {
     
             rButton.setOnAction(e -> {
                 j = j + 1;
-                if (j == list.size()) {
+                if (j == lista.size()) {
                     j = 0;
                 }
                 ImagenCarrusel.setImage(images[j]);
@@ -300,8 +300,8 @@ public class HelloController implements Initializable {
             });
             lbutton.setOnAction(e -> {
                 j = j - 1;
-                if (j == 0 || j > list.size() + 1 || j == -1) {
-                    j = list.size() - 1;
+                if (j == 0 || j > lista.size() + 1 || j == -1) {
+                    j = lista.size() - 1;
                 }
                 ImagenCarrusel.setImage(images[j]);
     
@@ -324,7 +324,7 @@ public class HelloController implements Initializable {
             e.printStackTrace();
         }
     }
-    */
+    
 
     @FXML
     protected void onSeeBibliography() {
